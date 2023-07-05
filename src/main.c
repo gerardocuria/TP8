@@ -20,11 +20,15 @@ void ActivarAlarma(clock_t2 reloj){
 int main(void){
 
     //uint8_t hora[6];
-    reloj = ClockCreate(4, ActivarAlarma);
+    reloj = ClockCreate(10, ActivarAlarma);
 
     SisTick_Init(1000);
 
     board = BoardCreate();
+
+    DisplayFlashDigits(board->display,0, 3, 200); 
+
+    DisplayToggleDot(board->display, 1);
 
     while(true){
 
@@ -70,17 +74,28 @@ int main(void){
         }
 
 
-        ClockGetTime(reloj, hora, sizeof(hora));
-        __asm volatile("cpsid i");
-        DisplayWriteBCD(board->display, hora, sizeof(hora));
-        __asm volatile ("cpsie i");
+        // ClockGetTime(reloj, hora, sizeof(hora));
+        // __asm volatile("cpsid i");
+        // DisplayWriteBCD(board->display, hora, sizeof(hora));
+        // __asm volatile ("cpsie i");
 
     }
 }
 
 void SysTick_Handler(void){
+
+    static bool last_value = false;
+    bool current_value = false;
+
     DisplayRefresh(board->display);
+    //current_value = 
     ClockTick(reloj);
-    //ClockGetTime(reloj, hora, sizeof(hora));
-    //DisplayWriteBCD(board->display, hora, sizeof(hora));
+
+    if(current_value != last_value){
+        DisplayToggleDot(board->display,1);
+        last_value = current_value;
+    };
+    //ClockTick(reloj);
+    ClockGetTime(reloj, hora, sizeof(hora));
+    DisplayWriteBCD(board->display, hora, sizeof(hora));
 }

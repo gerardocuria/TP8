@@ -1122,25 +1122,25 @@ LOAD /usr/lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/softfp/crtn.o
                 0x000000001a000114                . = ALIGN (0x4)
                 0x000000001a000114                __section_table_start = .
                 0x000000001a000114                __data_section_table = .
-                0x000000001a000114        0x4 LONG 0x1a00178c LOADADDR (.data)
+                0x000000001a000114        0x4 LONG 0x1a0018b8 LOADADDR (.data)
                 0x000000001a000118        0x4 LONG 0x10000000 ADDR (.data)
                 0x000000001a00011c        0x4 LONG 0x0 SIZEOF (.data)
-                0x000000001a000120        0x4 LONG 0x1a00178c LOADADDR (.data_RAM2)
+                0x000000001a000120        0x4 LONG 0x1a0018b8 LOADADDR (.data_RAM2)
                 0x000000001a000124        0x4 LONG 0x10080000 ADDR (.data_RAM2)
                 0x000000001a000128        0x4 LONG 0x0 SIZEOF (.data_RAM2)
-                0x000000001a00012c        0x4 LONG 0x1a00178c LOADADDR (.data_RAM3)
+                0x000000001a00012c        0x4 LONG 0x1a0018b8 LOADADDR (.data_RAM3)
                 0x000000001a000130        0x4 LONG 0x20000000 ADDR (.data_RAM3)
                 0x000000001a000134        0x4 LONG 0x0 SIZEOF (.data_RAM3)
-                0x000000001a000138        0x4 LONG 0x1a00178c LOADADDR (.data_RAM4)
+                0x000000001a000138        0x4 LONG 0x1a0018b8 LOADADDR (.data_RAM4)
                 0x000000001a00013c        0x4 LONG 0x20008000 ADDR (.data_RAM4)
                 0x000000001a000140        0x4 LONG 0x0 SIZEOF (.data_RAM4)
-                0x000000001a000144        0x4 LONG 0x1a00178c LOADADDR (.data_RAM5)
+                0x000000001a000144        0x4 LONG 0x1a0018b8 LOADADDR (.data_RAM5)
                 0x000000001a000148        0x4 LONG 0x2000c000 ADDR (.data_RAM5)
                 0x000000001a00014c        0x4 LONG 0x0 SIZEOF (.data_RAM5)
                 0x000000001a000150                __data_section_table_end = .
                 0x000000001a000150                __bss_section_table = .
                 0x000000001a000150        0x4 LONG 0x10000000 ADDR (.bss)
-                0x000000001a000154        0x4 LONG 0x90 SIZEOF (.bss)
+                0x000000001a000154        0x4 LONG 0x98 SIZEOF (.bss)
                 0x000000001a000158        0x4 LONG 0x10080000 ADDR (.bss_RAM2)
                 0x000000001a00015c        0x4 LONG 0x0 SIZEOF (.bss_RAM2)
                 0x000000001a000160        0x4 LONG 0x20000000 ADDR (.bss_RAM3)
@@ -1239,7 +1239,7 @@ LOAD /usr/lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/softfp/crtn.o
 .iplt           0x000000001a00023c        0x0
  .iplt          0x000000001a00023c        0x0 build/obj/src/bsp.o
 
-.text           0x000000001a00023c     0x1550
+.text           0x000000001a00023c     0x167c
  *(.text*)
  .text.__NVIC_SetPriority
                 0x000000001a00023c       0x54 build/obj/src/bsp.o
@@ -1318,102 +1318,108 @@ LOAD /usr/lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/softfp/crtn.o
  .text.ActivarAlarma
                 0x000000001a000b10       0x14 build/obj/src/main.o
                 0x000000001a000b10                ActivarAlarma
- .text.main     0x000000001a000b24      0x1a4 build/obj/src/main.o
+ .text.main     0x000000001a000b24      0x19c build/obj/src/main.o
                 0x000000001a000b24                main
  .text.SysTick_Handler
-                0x000000001a000cc8       0x28 build/obj/src/main.o
-                0x000000001a000cc8                SysTick_Handler
+                0x000000001a000cc0       0x74 build/obj/src/main.o
+                0x000000001a000cc0                SysTick_Handler
  .text.DisplayAllocate
-                0x000000001a000cf0       0x14 build/obj/src/pantalla.o
+                0x000000001a000d34       0x14 build/obj/src/pantalla.o
  .text.DisplayCreate
-                0x000000001a000d04       0x54 build/obj/src/pantalla.o
-                0x000000001a000d04                DisplayCreate
+                0x000000001a000d48       0x6c build/obj/src/pantalla.o
+                0x000000001a000d48                DisplayCreate
  .text.DisplayWriteBCD
-                0x000000001a000d58       0x68 build/obj/src/pantalla.o
-                0x000000001a000d58                DisplayWriteBCD
+                0x000000001a000db4       0x68 build/obj/src/pantalla.o
+                0x000000001a000db4                DisplayWriteBCD
  .text.DisplayRefresh
-                0x000000001a000dc0       0x50 build/obj/src/pantalla.o
-                0x000000001a000dc0                DisplayRefresh
+                0x000000001a000e1c       0xb0 build/obj/src/pantalla.o
+                0x000000001a000e1c                DisplayRefresh
+ .text.DisplayFlashDigits
+                0x000000001a000ecc       0x3e build/obj/src/pantalla.o
+                0x000000001a000ecc                DisplayFlashDigits
+ .text.DisplayToggleDot
+                0x000000001a000f0a       0x32 build/obj/src/pantalla.o
+                0x000000001a000f0a                DisplayToggleDot
  .text.ClockCreate
-                0x000000001a000e10       0x34 build/obj/src/reloj.o
-                0x000000001a000e10                ClockCreate
+                0x000000001a000f3c       0x34 build/obj/src/reloj.o
+                0x000000001a000f3c                ClockCreate
  .text.ClockGetTime
-                0x000000001a000e44       0x24 build/obj/src/reloj.o
-                0x000000001a000e44                ClockGetTime
+                0x000000001a000f70       0x24 build/obj/src/reloj.o
+                0x000000001a000f70                ClockGetTime
  .text.ClockTick
-                0x000000001a000e68       0xdc build/obj/src/reloj.o
-                0x000000001a000e68                ClockTick
- .text.compara  0x000000001a000f44       0x32 build/obj/src/reloj.o
-                0x000000001a000f44                compara
- *fill*         0x000000001a000f76        0x2 
+                0x000000001a000f94       0xdc build/obj/src/reloj.o
+                0x000000001a000f94                ClockTick
+ .text.compara  0x000000001a001070       0x32 build/obj/src/reloj.o
+                0x000000001a001070                compara
+ *fill*         0x000000001a0010a2        0x2 
  .text.ResetISR
-                0x000000001a000f78       0xe0 build/obj/external/base/soc/lpc43xx/startup/cr_startup_lpc43xx.o
-                0x000000001a000f78                ResetISR
+                0x000000001a0010a4       0xe0 build/obj/external/base/soc/lpc43xx/startup/cr_startup_lpc43xx.o
+                0x000000001a0010a4                ResetISR
  .text.SystemCoreClockUpdate
-                0x000000001a001058       0x18 build/lib/board/edu-ciaa-nxp.a(chip_18xx_43xx.o)
-                0x000000001a001058                SystemCoreClockUpdate
+                0x000000001a001184       0x18 build/lib/board/edu-ciaa-nxp.a(chip_18xx_43xx.o)
+                0x000000001a001184                SystemCoreClockUpdate
  .text.Chip_Clock_GetDivRate
-                0x000000001a001070       0x40 build/lib/board/edu-ciaa-nxp.a(clock_18xx_43xx.o)
+                0x000000001a00119c       0x40 build/lib/board/edu-ciaa-nxp.a(clock_18xx_43xx.o)
  .text.Chip_Clock_FindBaseClock
-                0x000000001a0010b0       0x90 build/lib/board/edu-ciaa-nxp.a(clock_18xx_43xx.o)
+                0x000000001a0011dc       0x90 build/lib/board/edu-ciaa-nxp.a(clock_18xx_43xx.o)
  .text.Chip_Clock_GetMainPLLHz
-                0x000000001a001140       0xbc build/lib/board/edu-ciaa-nxp.a(clock_18xx_43xx.o)
-                0x000000001a001140                Chip_Clock_GetMainPLLHz
+                0x000000001a00126c       0xbc build/lib/board/edu-ciaa-nxp.a(clock_18xx_43xx.o)
+                0x000000001a00126c                Chip_Clock_GetMainPLLHz
  .text.Chip_Clock_GetDividerSource
-                0x000000001a0011fc       0x40 build/lib/board/edu-ciaa-nxp.a(clock_18xx_43xx.o)
-                0x000000001a0011fc                Chip_Clock_GetDividerSource
+                0x000000001a001328       0x40 build/lib/board/edu-ciaa-nxp.a(clock_18xx_43xx.o)
+                0x000000001a001328                Chip_Clock_GetDividerSource
  .text.Chip_Clock_GetDividerDivisor
-                0x000000001a00123c       0x38 build/lib/board/edu-ciaa-nxp.a(clock_18xx_43xx.o)
-                0x000000001a00123c                Chip_Clock_GetDividerDivisor
+                0x000000001a001368       0x38 build/lib/board/edu-ciaa-nxp.a(clock_18xx_43xx.o)
+                0x000000001a001368                Chip_Clock_GetDividerDivisor
  .text.Chip_Clock_GetClockInputHz
-                0x000000001a001274      0x140 build/lib/board/edu-ciaa-nxp.a(clock_18xx_43xx.o)
-                0x000000001a001274                Chip_Clock_GetClockInputHz
+                0x000000001a0013a0      0x140 build/lib/board/edu-ciaa-nxp.a(clock_18xx_43xx.o)
+                0x000000001a0013a0                Chip_Clock_GetClockInputHz
  .text.Chip_Clock_GetBaseClocktHz
-                0x000000001a0013b4       0x24 build/lib/board/edu-ciaa-nxp.a(clock_18xx_43xx.o)
-                0x000000001a0013b4                Chip_Clock_GetBaseClocktHz
+                0x000000001a0014e0       0x24 build/lib/board/edu-ciaa-nxp.a(clock_18xx_43xx.o)
+                0x000000001a0014e0                Chip_Clock_GetBaseClocktHz
  .text.Chip_Clock_GetBaseClock
-                0x000000001a0013d8       0x4c build/lib/board/edu-ciaa-nxp.a(clock_18xx_43xx.o)
-                0x000000001a0013d8                Chip_Clock_GetBaseClock
+                0x000000001a001504       0x4c build/lib/board/edu-ciaa-nxp.a(clock_18xx_43xx.o)
+                0x000000001a001504                Chip_Clock_GetBaseClock
  .text.Chip_Clock_GetRate
-                0x000000001a001424       0x88 build/lib/board/edu-ciaa-nxp.a(clock_18xx_43xx.o)
-                0x000000001a001424                Chip_Clock_GetRate
- .text          0x000000001a0014ac       0x64 /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libc_nano.a(lib_a-memcmp.o)
-                0x000000001a0014ac                memcmp
- .text          0x000000001a001510      0x134 /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libc_nano.a(lib_a-memcpy.o)
-                0x000000001a001510                memcpy
- .text          0x000000001a001644       0xa4 /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libc_nano.a(lib_a-memset.o)
-                0x000000001a001644                memset
+                0x000000001a001550       0x88 build/lib/board/edu-ciaa-nxp.a(clock_18xx_43xx.o)
+                0x000000001a001550                Chip_Clock_GetRate
+ .text          0x000000001a0015d8       0x64 /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libc_nano.a(lib_a-memcmp.o)
+                0x000000001a0015d8                memcmp
+ .text          0x000000001a00163c      0x134 /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libc_nano.a(lib_a-memcpy.o)
+                0x000000001a00163c                memcpy
+ .text          0x000000001a001770       0xa4 /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libc_nano.a(lib_a-memset.o)
+                0x000000001a001770                memset
  *(.rodata .rodata.* .constdata .constdata.*)
- .rodata        0x000000001a0016e8        0xc build/obj/src/bsp.o
- .rodata        0x000000001a0016f4       0x10 build/obj/src/main.o
+ .rodata        0x000000001a001814        0xc build/obj/src/bsp.o
+ .rodata        0x000000001a001820       0x10 build/obj/src/main.o
  .rodata.IMAGES
-                0x000000001a001704        0xa build/obj/src/pantalla.o
- *fill*         0x000000001a00170e        0x2 
+                0x000000001a001830        0xa build/obj/src/pantalla.o
+ *fill*         0x000000001a00183a        0x2 
  .rodata.periph_to_base
-                0x000000001a001710       0x6c build/lib/board/edu-ciaa-nxp.a(clock_18xx_43xx.o)
- .rodata        0x000000001a00177c        0x6 build/lib/board/edu-ciaa-nxp.a(clock_18xx_43xx.o)
- *fill*         0x000000001a001782        0x2 
+                0x000000001a00183c       0x6c build/lib/board/edu-ciaa-nxp.a(clock_18xx_43xx.o)
+ .rodata        0x000000001a0018a8        0x6 build/lib/board/edu-ciaa-nxp.a(clock_18xx_43xx.o)
+ *fill*         0x000000001a0018ae        0x2 
  .rodata.ExtRateIn
-                0x000000001a001784        0x4 build/lib/board/edu-ciaa-nxp.a(board.o)
-                0x000000001a001784                ExtRateIn
+                0x000000001a0018b0        0x4 build/lib/board/edu-ciaa-nxp.a(board.o)
+                0x000000001a0018b0                ExtRateIn
  .rodata.OscRateIn
-                0x000000001a001788        0x4 build/lib/board/edu-ciaa-nxp.a(board.o)
-                0x000000001a001788                OscRateIn
-                0x000000001a00178c                . = ALIGN (0x4)
+                0x000000001a0018b4        0x4 build/lib/board/edu-ciaa-nxp.a(board.o)
+                0x000000001a0018b4                OscRateIn
+                0x000000001a0018b8                . = ALIGN (0x4)
 
-.rel.dyn        0x000000001a00178c        0x0
- .rel.iplt      0x000000001a00178c        0x0 build/obj/src/bsp.o
+.rel.dyn        0x000000001a0018b8        0x0
+ .rel.iplt      0x000000001a0018b8        0x0 build/obj/src/bsp.o
 
 .ARM.extab
  *(.ARM.extab* .gnu.linkonce.armextab.*)
-                0x000000001a00178c                __exidx_start = .
+                0x000000001a0018b8                __exidx_start = .
 
 .ARM.exidx
  *(.ARM.exidx* .gnu.linkonce.armexidx.*)
-                0x000000001a00178c                __exidx_end = .
-                0x000000001a00178c                _etext = .
+                0x000000001a0018b8                __exidx_end = .
+                0x000000001a0018b8                _etext = .
 
-.data_RAM2      0x0000000010080000        0x0 load address 0x000000001a00178c
+.data_RAM2      0x0000000010080000        0x0 load address 0x000000001a0018b8
  FILL mask 0xff
                 [!provide]                        PROVIDE (__start_data_RAM2 = .)
  *(.ramfunc.$RAM2)
@@ -1424,7 +1430,7 @@ LOAD /usr/lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/softfp/crtn.o
                 0x0000000010080000                . = ALIGN (0x4)
                 [!provide]                        PROVIDE (__end_data_RAM2 = .)
 
-.data_RAM3      0x0000000020000000        0x0 load address 0x000000001a00178c
+.data_RAM3      0x0000000020000000        0x0 load address 0x000000001a0018b8
  FILL mask 0xff
                 [!provide]                        PROVIDE (__start_data_RAM3 = .)
  *(.ramfunc.$RAM3)
@@ -1434,7 +1440,7 @@ LOAD /usr/lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/softfp/crtn.o
                 0x0000000020000000                . = ALIGN (0x4)
                 [!provide]                        PROVIDE (__end_data_RAM3 = .)
 
-.data_RAM4      0x0000000020008000        0x0 load address 0x000000001a00178c
+.data_RAM4      0x0000000020008000        0x0 load address 0x000000001a0018b8
  FILL mask 0xff
                 [!provide]                        PROVIDE (__start_data_RAM4 = .)
  *(.ramfunc.$RAM4)
@@ -1444,7 +1450,7 @@ LOAD /usr/lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/softfp/crtn.o
                 0x0000000020008000                . = ALIGN (0x4)
                 [!provide]                        PROVIDE (__end_data_RAM4 = .)
 
-.data_RAM5      0x000000002000c000        0x0 load address 0x000000001a00178c
+.data_RAM5      0x000000002000c000        0x0 load address 0x000000001a0018b8
  FILL mask 0xff
                 [!provide]                        PROVIDE (__start_data_RAM5 = .)
  *(.ramfunc.$RAM5)
@@ -1460,7 +1466,7 @@ LOAD /usr/lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/softfp/crtn.o
                 0x0000000010000000                . = ALIGN (0x4)
                 0x0000000010000000                _end_uninit_RESERVED = .
 
-.data           0x0000000010000000        0x0 load address 0x000000001a00178c
+.data           0x0000000010000000        0x0 load address 0x000000001a0018b8
  FILL mask 0xff
                 0x0000000010000000                _data = .
  *(vtable)
@@ -1469,7 +1475,7 @@ LOAD /usr/lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/softfp/crtn.o
                 0x0000000010000000                . = ALIGN (0x4)
                 0x0000000010000000                _edata = .
 
-.igot.plt       0x0000000010000000        0x0 load address 0x000000001a00178c
+.igot.plt       0x0000000010000000        0x0 load address 0x000000001a0018b8
  .igot.plt      0x0000000010000000        0x0 build/obj/src/bsp.o
 
 .bss_RAM2       0x0000000010080000        0x0
@@ -1500,7 +1506,7 @@ LOAD /usr/lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/softfp/crtn.o
                 0x000000002000c000                . = ALIGN ((. != 0x0)?0x4:0x1)
                 [!provide]                        PROVIDE (__end_bss_RAM5 = .)
 
-.bss            0x0000000010000000       0x90
+.bss            0x0000000010000000       0x98
                 0x0000000010000000                _bss = .
  *(.bss*)
  .bss.board     0x0000000010000000       0x20 build/obj/src/bsp.o
@@ -1513,17 +1519,20 @@ LOAD /usr/lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/softfp/crtn.o
  .bss.reloj     0x0000000010000044        0x4 build/obj/src/main.o
  .bss.hora      0x0000000010000048        0x4 build/obj/src/main.o
                 0x0000000010000048                hora
+ .bss.last_value.0
+                0x000000001000004c        0x1 build/obj/src/main.o
+ *fill*         0x000000001000004d        0x3 
  .bss.instances.0
-                0x000000001000004c       0x18 build/obj/src/pantalla.o
- .bss.self.0    0x0000000010000064       0x20 build/obj/src/reloj.o
+                0x0000000010000050       0x1c build/obj/src/pantalla.o
+ .bss.self.0    0x000000001000006c       0x20 build/obj/src/reloj.o
  .bss.SystemCoreClock
-                0x0000000010000084        0x4 build/lib/board/edu-ciaa-nxp.a(chip_18xx_43xx.o)
-                0x0000000010000084                SystemCoreClock
+                0x000000001000008c        0x4 build/lib/board/edu-ciaa-nxp.a(chip_18xx_43xx.o)
+                0x000000001000008c                SystemCoreClock
  .bss.audio_usb_pll_freq
-                0x0000000010000088        0x8 build/lib/board/edu-ciaa-nxp.a(clock_18xx_43xx.o)
+                0x0000000010000090        0x8 build/lib/board/edu-ciaa-nxp.a(clock_18xx_43xx.o)
  *(COMMON)
-                0x0000000010000090                . = ALIGN (0x4)
-                0x0000000010000090                _ebss = .
+                0x0000000010000098                . = ALIGN (0x4)
+                0x0000000010000098                _ebss = .
                 [!provide]                        PROVIDE (end = .)
 
 .noinit_RAM2    0x0000000010080000        0x0
@@ -1546,14 +1555,14 @@ LOAD /usr/lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/softfp/crtn.o
  *(.noinit.$RamAHB_ETB16*)
                 0x000000002000c000                . = ALIGN (0x4)
 
-.noinit         0x0000000010000090        0x0
-                0x0000000010000090                _noinit = .
+.noinit         0x0000000010000098        0x0
+                0x0000000010000098                _noinit = .
  *(.noinit*)
-                0x0000000010000090                . = ALIGN (0x4)
-                0x0000000010000090                _end_noinit = .
+                0x0000000010000098                . = ALIGN (0x4)
+                0x0000000010000098                _end_noinit = .
                 [!provide]                        PROVIDE (_pvHeapStart = DEFINED (__user_heap_base)?__user_heap_base:.)
                 0x0000000010008000                PROVIDE (_vStackTop = DEFINED (__user_stack_top)?__user_stack_top:(__top_RamLoc32 - 0x0))
-                0xffffffff53ff666e                PROVIDE (__valid_user_code_checksum = (0x0 - ((((((_vStackTop + (ResetISR + 0x1)) + (NMI_Handler + 0x1)) + (HardFault_Handler + 0x1)) + (DEFINED (MemManage_Handler)?MemManage_Handler:0x0 + 0x1)) + (DEFINED (BusFault_Handler)?BusFault_Handler:0x0 + 0x1)) + (DEFINED (UsageFault_Handler)?UsageFault_Handler:0x0 + 0x1))))
+                0xffffffff53ff6542                PROVIDE (__valid_user_code_checksum = (0x0 - ((((((_vStackTop + (ResetISR + 0x1)) + (NMI_Handler + 0x1)) + (HardFault_Handler + 0x1)) + (DEFINED (MemManage_Handler)?MemManage_Handler:0x0 + 0x1)) + (DEFINED (BusFault_Handler)?BusFault_Handler:0x0 + 0x1)) + (DEFINED (UsageFault_Handler)?UsageFault_Handler:0x0 + 0x1))))
 OUTPUT(build/bin/TP8.elf elf32-littlearm)
 LOAD linker stubs
 
@@ -1600,35 +1609,35 @@ LOAD linker stubs
  .comment       0x0000000000000033       0x34 /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libc_nano.a(lib_a-memcmp.o)
  .comment       0x0000000000000033       0x34 /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libc_nano.a(lib_a-memset.o)
 
-.debug_info     0x0000000000000000     0x5431
+.debug_info     0x0000000000000000     0x5534
  .debug_info    0x0000000000000000     0x113e build/obj/src/bsp.o
  .debug_info    0x000000000000113e      0x6c6 build/obj/src/digital.o
- .debug_info    0x0000000000001804      0x233 build/obj/src/main.o
- .debug_info    0x0000000000001a37      0x2bd build/obj/src/pantalla.o
- .debug_info    0x0000000000001cf4      0x3e3 build/obj/src/reloj.o
- .debug_info    0x00000000000020d7      0x2d9 build/obj/external/base/soc/lpc43xx/startup/cr_startup_lpc43xx.o
- .debug_info    0x00000000000023b0      0xa59 build/lib/board/edu-ciaa-nxp.a(chip_18xx_43xx.o)
- .debug_info    0x0000000000002e09     0x1660 build/lib/board/edu-ciaa-nxp.a(clock_18xx_43xx.o)
- .debug_info    0x0000000000004469      0xd33 build/lib/board/edu-ciaa-nxp.a(board.o)
- .debug_info    0x000000000000519c      0x138 /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libc_nano.a(lib_a-memcmp.o)
- .debug_info    0x00000000000052d4       0x26 /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libc_nano.a(lib_a-memcpy.o)
- .debug_info    0x00000000000052fa      0x137 /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libc_nano.a(lib_a-memset.o)
+ .debug_info    0x0000000000001804      0x260 build/obj/src/main.o
+ .debug_info    0x0000000000001a64      0x393 build/obj/src/pantalla.o
+ .debug_info    0x0000000000001df7      0x3e3 build/obj/src/reloj.o
+ .debug_info    0x00000000000021da      0x2d9 build/obj/external/base/soc/lpc43xx/startup/cr_startup_lpc43xx.o
+ .debug_info    0x00000000000024b3      0xa59 build/lib/board/edu-ciaa-nxp.a(chip_18xx_43xx.o)
+ .debug_info    0x0000000000002f0c     0x1660 build/lib/board/edu-ciaa-nxp.a(clock_18xx_43xx.o)
+ .debug_info    0x000000000000456c      0xd33 build/lib/board/edu-ciaa-nxp.a(board.o)
+ .debug_info    0x000000000000529f      0x138 /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libc_nano.a(lib_a-memcmp.o)
+ .debug_info    0x00000000000053d7       0x26 /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libc_nano.a(lib_a-memcpy.o)
+ .debug_info    0x00000000000053fd      0x137 /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libc_nano.a(lib_a-memset.o)
 
-.debug_abbrev   0x0000000000000000     0x10f0
+.debug_abbrev   0x0000000000000000     0x111f
  .debug_abbrev  0x0000000000000000      0x2d1 build/obj/src/bsp.o
  .debug_abbrev  0x00000000000002d1      0x211 build/obj/src/digital.o
- .debug_abbrev  0x00000000000004e2      0x119 build/obj/src/main.o
- .debug_abbrev  0x00000000000005fb      0x11d build/obj/src/pantalla.o
- .debug_abbrev  0x0000000000000718      0x111 build/obj/src/reloj.o
- .debug_abbrev  0x0000000000000829      0x12b build/obj/external/base/soc/lpc43xx/startup/cr_startup_lpc43xx.o
- .debug_abbrev  0x0000000000000954      0x173 build/lib/board/edu-ciaa-nxp.a(chip_18xx_43xx.o)
- .debug_abbrev  0x0000000000000ac7      0x2fc build/lib/board/edu-ciaa-nxp.a(clock_18xx_43xx.o)
- .debug_abbrev  0x0000000000000dc3      0x1d8 build/lib/board/edu-ciaa-nxp.a(board.o)
- .debug_abbrev  0x0000000000000f9b       0x8d /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libc_nano.a(lib_a-memcmp.o)
- .debug_abbrev  0x0000000000001028       0x14 /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libc_nano.a(lib_a-memcpy.o)
- .debug_abbrev  0x000000000000103c       0xb4 /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libc_nano.a(lib_a-memset.o)
+ .debug_abbrev  0x00000000000004e2      0x11b build/obj/src/main.o
+ .debug_abbrev  0x00000000000005fd      0x14a build/obj/src/pantalla.o
+ .debug_abbrev  0x0000000000000747      0x111 build/obj/src/reloj.o
+ .debug_abbrev  0x0000000000000858      0x12b build/obj/external/base/soc/lpc43xx/startup/cr_startup_lpc43xx.o
+ .debug_abbrev  0x0000000000000983      0x173 build/lib/board/edu-ciaa-nxp.a(chip_18xx_43xx.o)
+ .debug_abbrev  0x0000000000000af6      0x2fc build/lib/board/edu-ciaa-nxp.a(clock_18xx_43xx.o)
+ .debug_abbrev  0x0000000000000df2      0x1d8 build/lib/board/edu-ciaa-nxp.a(board.o)
+ .debug_abbrev  0x0000000000000fca       0x8d /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libc_nano.a(lib_a-memcmp.o)
+ .debug_abbrev  0x0000000000001057       0x14 /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libc_nano.a(lib_a-memcpy.o)
+ .debug_abbrev  0x000000000000106b       0xb4 /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libc_nano.a(lib_a-memset.o)
 
-.debug_aranges  0x0000000000000000      0x4c8
+.debug_aranges  0x0000000000000000      0x4d8
  .debug_aranges
                 0x0000000000000000       0xa8 build/obj/src/bsp.o
  .debug_aranges
@@ -1636,34 +1645,34 @@ LOAD linker stubs
  .debug_aranges
                 0x0000000000000148       0x30 build/obj/src/main.o
  .debug_aranges
-                0x0000000000000178       0x38 build/obj/src/pantalla.o
+                0x0000000000000178       0x48 build/obj/src/pantalla.o
  .debug_aranges
-                0x00000000000001b0       0x68 build/obj/src/reloj.o
+                0x00000000000001c0       0x68 build/obj/src/reloj.o
  .debug_aranges
-                0x0000000000000218       0x80 build/obj/external/base/soc/lpc43xx/startup/cr_startup_lpc43xx.o
+                0x0000000000000228       0x80 build/obj/external/base/soc/lpc43xx/startup/cr_startup_lpc43xx.o
  .debug_aranges
-                0x0000000000000298       0x40 build/lib/board/edu-ciaa-nxp.a(chip_18xx_43xx.o)
+                0x00000000000002a8       0x40 build/lib/board/edu-ciaa-nxp.a(chip_18xx_43xx.o)
  .debug_aranges
-                0x00000000000002d8      0x138 build/lib/board/edu-ciaa-nxp.a(clock_18xx_43xx.o)
+                0x00000000000002e8      0x138 build/lib/board/edu-ciaa-nxp.a(clock_18xx_43xx.o)
  .debug_aranges
-                0x0000000000000410       0x58 build/lib/board/edu-ciaa-nxp.a(board.o)
+                0x0000000000000420       0x58 build/lib/board/edu-ciaa-nxp.a(board.o)
  .debug_aranges
-                0x0000000000000468       0x20 /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libc_nano.a(lib_a-memcmp.o)
+                0x0000000000000478       0x20 /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libc_nano.a(lib_a-memcmp.o)
  .debug_aranges
-                0x0000000000000488       0x20 /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libc_nano.a(lib_a-memcpy.o)
+                0x0000000000000498       0x20 /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libc_nano.a(lib_a-memcpy.o)
  .debug_aranges
-                0x00000000000004a8       0x20 /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libc_nano.a(lib_a-memset.o)
+                0x00000000000004b8       0x20 /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libc_nano.a(lib_a-memset.o)
 
-.debug_ranges   0x0000000000000000      0x408
+.debug_ranges   0x0000000000000000      0x418
  .debug_ranges  0x0000000000000000       0x98 build/obj/src/bsp.o
  .debug_ranges  0x0000000000000098       0x90 build/obj/src/digital.o
  .debug_ranges  0x0000000000000128       0x20 build/obj/src/main.o
- .debug_ranges  0x0000000000000148       0x40 build/obj/src/pantalla.o
- .debug_ranges  0x0000000000000188       0x58 build/obj/src/reloj.o
- .debug_ranges  0x00000000000001e0       0x70 build/obj/external/base/soc/lpc43xx/startup/cr_startup_lpc43xx.o
- .debug_ranges  0x0000000000000250       0x30 build/lib/board/edu-ciaa-nxp.a(chip_18xx_43xx.o)
- .debug_ranges  0x0000000000000280      0x140 build/lib/board/edu-ciaa-nxp.a(clock_18xx_43xx.o)
- .debug_ranges  0x00000000000003c0       0x48 build/lib/board/edu-ciaa-nxp.a(board.o)
+ .debug_ranges  0x0000000000000148       0x50 build/obj/src/pantalla.o
+ .debug_ranges  0x0000000000000198       0x58 build/obj/src/reloj.o
+ .debug_ranges  0x00000000000001f0       0x70 build/obj/external/base/soc/lpc43xx/startup/cr_startup_lpc43xx.o
+ .debug_ranges  0x0000000000000260       0x30 build/lib/board/edu-ciaa-nxp.a(chip_18xx_43xx.o)
+ .debug_ranges  0x0000000000000290      0x140 build/lib/board/edu-ciaa-nxp.a(clock_18xx_43xx.o)
+ .debug_ranges  0x00000000000003d0       0x48 build/lib/board/edu-ciaa-nxp.a(board.o)
 
 .debug_macro    0x0000000000000000     0x7506
  .debug_macro   0x0000000000000000      0x2f5 build/obj/src/bsp.o
@@ -1768,57 +1777,57 @@ LOAD linker stubs
  .debug_macro   0x00000000000074c7       0x16 build/lib/board/edu-ciaa-nxp.a(board.o)
  .debug_macro   0x00000000000074dd       0x29 build/lib/board/edu-ciaa-nxp.a(board.o)
 
-.debug_line     0x0000000000000000     0x4497
+.debug_line     0x0000000000000000     0x454a
  .debug_line    0x0000000000000000      0x9ba build/obj/src/bsp.o
  .debug_line    0x00000000000009ba      0x996 build/obj/src/digital.o
- .debug_line    0x0000000000001350      0x239 build/obj/src/main.o
- .debug_line    0x0000000000001589      0x2ee build/obj/src/pantalla.o
- .debug_line    0x0000000000001877      0x4a5 build/obj/src/reloj.o
- .debug_line    0x0000000000001d1c      0x20f build/obj/external/base/soc/lpc43xx/startup/cr_startup_lpc43xx.o
- .debug_line    0x0000000000001f2b      0x77e build/lib/board/edu-ciaa-nxp.a(chip_18xx_43xx.o)
- .debug_line    0x00000000000026a9     0x107b build/lib/board/edu-ciaa-nxp.a(clock_18xx_43xx.o)
- .debug_line    0x0000000000003724      0x97c build/lib/board/edu-ciaa-nxp.a(board.o)
- .debug_line    0x00000000000040a0      0x17a /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libc_nano.a(lib_a-memcmp.o)
- .debug_line    0x000000000000421a       0xbe /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libc_nano.a(lib_a-memcpy.o)
- .debug_line    0x00000000000042d8      0x1bf /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libc_nano.a(lib_a-memset.o)
+ .debug_line    0x0000000000001350      0x257 build/obj/src/main.o
+ .debug_line    0x00000000000015a7      0x383 build/obj/src/pantalla.o
+ .debug_line    0x000000000000192a      0x4a5 build/obj/src/reloj.o
+ .debug_line    0x0000000000001dcf      0x20f build/obj/external/base/soc/lpc43xx/startup/cr_startup_lpc43xx.o
+ .debug_line    0x0000000000001fde      0x77e build/lib/board/edu-ciaa-nxp.a(chip_18xx_43xx.o)
+ .debug_line    0x000000000000275c     0x107b build/lib/board/edu-ciaa-nxp.a(clock_18xx_43xx.o)
+ .debug_line    0x00000000000037d7      0x97c build/lib/board/edu-ciaa-nxp.a(board.o)
+ .debug_line    0x0000000000004153      0x17a /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libc_nano.a(lib_a-memcmp.o)
+ .debug_line    0x00000000000042cd       0xbe /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libc_nano.a(lib_a-memcpy.o)
+ .debug_line    0x000000000000438b      0x1bf /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libc_nano.a(lib_a-memset.o)
 
-.debug_str      0x0000000000000000    0x1e328
+.debug_str      0x0000000000000000    0x1e3b1
  .debug_str     0x0000000000000000    0x17f64 build/obj/src/bsp.o
                                       0x181a6 (size before relaxing)
  .debug_str     0x0000000000017f64      0x202 build/obj/src/digital.o
                                       0x168d4 (size before relaxing)
- .debug_str     0x0000000000018166      0x328 build/obj/src/main.o
-                                       0x3d19 (size before relaxing)
- .debug_str     0x000000000001848e     0x2ab8 build/obj/src/pantalla.o
-                                       0x66f3 (size before relaxing)
- .debug_str     0x000000000001af46     0x21a8 build/obj/src/reloj.o
+ .debug_str     0x0000000000018166      0x341 build/obj/src/main.o
+                                       0x3d38 (size before relaxing)
+ .debug_str     0x00000000000184a7     0x2b28 build/obj/src/pantalla.o
+                                       0x677a (size before relaxing)
+ .debug_str     0x000000000001afcf     0x21a8 build/obj/src/reloj.o
                                        0x8756 (size before relaxing)
- .debug_str     0x000000000001d0ee      0x215 build/obj/external/base/soc/lpc43xx/startup/cr_startup_lpc43xx.o
+ .debug_str     0x000000000001d177      0x215 build/obj/external/base/soc/lpc43xx/startup/cr_startup_lpc43xx.o
                                        0x2f94 (size before relaxing)
- .debug_str     0x000000000001d303      0x2c7 build/lib/board/edu-ciaa-nxp.a(chip_18xx_43xx.o)
+ .debug_str     0x000000000001d38c      0x2c7 build/lib/board/edu-ciaa-nxp.a(chip_18xx_43xx.o)
                                       0x17396 (size before relaxing)
- .debug_str     0x000000000001d5ca      0x686 build/lib/board/edu-ciaa-nxp.a(clock_18xx_43xx.o)
+ .debug_str     0x000000000001d653      0x686 build/lib/board/edu-ciaa-nxp.a(clock_18xx_43xx.o)
                                       0x17919 (size before relaxing)
- .debug_str     0x000000000001dc50      0x4bb build/lib/board/edu-ciaa-nxp.a(board.o)
+ .debug_str     0x000000000001dcd9      0x4bb build/lib/board/edu-ciaa-nxp.a(board.o)
                                       0x1a4f6 (size before relaxing)
- .debug_str     0x000000000001e10b      0x116 /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libc_nano.a(lib_a-memcmp.o)
+ .debug_str     0x000000000001e194      0x116 /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libc_nano.a(lib_a-memcmp.o)
                                         0x1b2 (size before relaxing)
- .debug_str     0x000000000001e221       0xb8 /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libc_nano.a(lib_a-memcpy.o)
- .debug_str     0x000000000001e2d9       0x4f /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libc_nano.a(lib_a-memset.o)
+ .debug_str     0x000000000001e2aa       0xb8 /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libc_nano.a(lib_a-memcpy.o)
+ .debug_str     0x000000000001e362       0x4f /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libc_nano.a(lib_a-memset.o)
                                         0x1c6 (size before relaxing)
 
-.debug_frame    0x0000000000000000     0x10c0
+.debug_frame    0x0000000000000000     0x1118
  .debug_frame   0x0000000000000000      0x28c build/obj/src/bsp.o
  .debug_frame   0x000000000000028c      0x294 build/obj/src/digital.o
- .debug_frame   0x0000000000000520       0x74 build/obj/src/main.o
- .debug_frame   0x0000000000000594       0x9c build/obj/src/pantalla.o
- .debug_frame   0x0000000000000630      0x184 build/obj/src/reloj.o
- .debug_frame   0x00000000000007b4      0x170 build/obj/external/base/soc/lpc43xx/startup/cr_startup_lpc43xx.o
- .debug_frame   0x0000000000000924       0xa0 build/lib/board/edu-ciaa-nxp.a(chip_18xx_43xx.o)
- .debug_frame   0x00000000000009c4      0x568 build/lib/board/edu-ciaa-nxp.a(clock_18xx_43xx.o)
- .debug_frame   0x0000000000000f2c      0x13c build/lib/board/edu-ciaa-nxp.a(board.o)
- .debug_frame   0x0000000000001068       0x2c /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libc_nano.a(lib_a-memcmp.o)
- .debug_frame   0x0000000000001094       0x2c /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libc_nano.a(lib_a-memset.o)
+ .debug_frame   0x0000000000000520       0x7c build/obj/src/main.o
+ .debug_frame   0x000000000000059c       0xec build/obj/src/pantalla.o
+ .debug_frame   0x0000000000000688      0x184 build/obj/src/reloj.o
+ .debug_frame   0x000000000000080c      0x170 build/obj/external/base/soc/lpc43xx/startup/cr_startup_lpc43xx.o
+ .debug_frame   0x000000000000097c       0xa0 build/lib/board/edu-ciaa-nxp.a(chip_18xx_43xx.o)
+ .debug_frame   0x0000000000000a1c      0x568 build/lib/board/edu-ciaa-nxp.a(clock_18xx_43xx.o)
+ .debug_frame   0x0000000000000f84      0x13c build/lib/board/edu-ciaa-nxp.a(board.o)
+ .debug_frame   0x00000000000010c0       0x2c /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libc_nano.a(lib_a-memcmp.o)
+ .debug_frame   0x00000000000010ec       0x2c /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libc_nano.a(lib_a-memset.o)
 
 .debug_loc      0x0000000000000000      0x407
  .debug_loc     0x0000000000000000      0x1db /usr/lib/gcc/arm-none-eabi/10.3.1/../../../arm-none-eabi/lib/thumb/v7e-m+fp/softfp/libc_nano.a(lib_a-memcmp.o)
@@ -1919,7 +1928,11 @@ DigitalOutputToggle                               build/obj/src/digital.o
 DigitsInit                                        build/obj/src/bsp.o
 DisplayCreate                                     build/obj/src/pantalla.o
                                                   build/obj/src/bsp.o
+DisplayFlashDigits                                build/obj/src/pantalla.o
+                                                  build/obj/src/main.o
 DisplayRefresh                                    build/obj/src/pantalla.o
+                                                  build/obj/src/main.o
+DisplayToggleDot                                  build/obj/src/pantalla.o
                                                   build/obj/src/main.o
 DisplayWriteBCD                                   build/obj/src/pantalla.o
                                                   build/obj/src/main.o
