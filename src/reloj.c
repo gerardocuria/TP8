@@ -140,7 +140,7 @@ void PosponerAlarma (clock_t2 reloj){
 
 void DecrementarPosponerAlarma (clock_t2 reloj){
         reloj->alarm->posponer--;
-        if (reloj->alarm->posponer == 0) {
+        if (reloj->alarm->posponer == 0 && reloj->alarm->valida==true) {
             reloj->alarm->funcion(reloj);
         }
     }
