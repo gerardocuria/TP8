@@ -5,6 +5,8 @@
 
 #include "reloj.h"
 
+#define tics_por_segundo 1000
+
 void ActivarAlarma(clock_t2 reloj);
 
 static board_t board;
@@ -17,18 +19,20 @@ void ActivarAlarma(clock_t2 reloj){
 
 }
 
+static uint32_t current_value;
+
 int main(void){
 
     //uint8_t hora[6];
     reloj = ClockCreate(10, ActivarAlarma);
 
-    SisTick_Init(1000);
+    SisTick_Init(tics_por_segundo);
 
     board = BoardCreate();
 
-    DisplayFlashDigits(board->display,0, 3, 200); 
+    DisplayFlashDigits(board->display,0, 3, 0); 
 
-    DisplayToggleDot(board->display, 1);
+    //DisplayToggleDot(board->display, 1);
 
     while(true){
 
@@ -84,17 +88,18 @@ int main(void){
 
 void SysTick_Handler(void){
 
-    static bool last_value = false;
-    bool current_value = false;
+    //static bool last_value = false;
 
     DisplayRefresh(board->display);
     //current_value = 
-    ClockTick(reloj);
+    current_value = ClockTick(reloj);
 
-    if(current_value != last_value){
+    if(current_value != tics_por_segundo){
         DisplayToggleDot(board->display,1);
-        last_value = current_value;
+        //last_value = current_value;
     };
+
+
     //ClockTick(reloj);
     ClockGetTime(reloj, hora, sizeof(hora));
     DisplayWriteBCD(board->display, hora, sizeof(hora));

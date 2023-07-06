@@ -19,7 +19,7 @@ struct alarm_s {
 struct clock_s {
     uint8_t hora_actual[6];
     bool valida;
-    int tics_por_segundo;
+    uint32_t tics_por_segundo;
     int conteo_tics;
     struct alarm_s alarm[1]; 
     //uint8_t hora_alarma[6];
@@ -46,7 +46,7 @@ bool ClockSetTime(clock_t2 reloj,const uint8_t * hora, int size){
     return true;
 }
 
-void ClockTick(clock_t2 reloj){
+uint32_t ClockTick(clock_t2 reloj){
     reloj->conteo_tics++;
 
     compara(reloj);
@@ -88,7 +88,7 @@ void ClockTick(clock_t2 reloj){
         reloj->hora_actual[1]=0;    
     }
     //reloj->alarm->funcion(reloj);
-
+    return reloj->conteo_tics;
 }
 
 //tengo que hacer un get time y un set time par la alarmavalida

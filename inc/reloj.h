@@ -11,7 +11,7 @@ bool ClockGetTime(clock_t2 reloj,uint8_t * hora, int size);           //este est
 
 bool ClockSetTime(clock_t2 reloj,const uint8_t * hora, int size);     //este esta igual const esta en otra posicion
 
-void ClockTick(clock_t2 reloj);                                       //esta igual
+uint32_t ClockTick(clock_t2 reloj);                                       //esta igual
 
 bool ClockGetAlarm(clock_t2 reloj,uint8_t * alarma, int size);        //esta igual
 
