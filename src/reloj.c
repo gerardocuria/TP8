@@ -20,7 +20,7 @@ struct clock_s {
     uint8_t hora_actual[6];
     bool valida;
     uint32_t tics_por_segundo;
-    int conteo_tics;
+    uint32_t conteo_tics;
     struct alarm_s alarm[1]; 
     //uint8_t hora_alarma[6];
     //bool alarma_habilitada;
