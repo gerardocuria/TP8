@@ -27,12 +27,17 @@ uint8_t hora[4];
 
 static modo_t modo;
 
+static bool sonar_alarma;
+
 static const uint8_t LIMITES_MINUTOS[] = {5,9};
 
 static const uint8_t LIMITES_HORAS[] = {2,3};
 
 void ActivarAlarma(clock_t2 reloj){
-
+    if(sonar_alarma==false){
+        DisplayDotOn(board->display, 0);
+        sonar_alarma=true;
+    } 
 }
 
 
@@ -74,10 +79,10 @@ void CambiarModo(modo_t valor) {
         break;
     case MOSTRANDO_HORA:
         DisplayFlashDigits(board->display, 0, 3, 0);
-        /*DisplayTurnOffDot(board->display, 0);
-        DisplayTurnOffDot(board->display, 1);
-        DisplayTurnOffDot(board->display, 2);
-        DisplayTurnOffDot(board->display, 3);*/
+        DisplayDotOff(board->display, 0);
+        DisplayDotOff(board->display, 1);
+        DisplayDotOff(board->display, 2);
+        DisplayDotOff(board->display, 3);
         break;
     case AJUSTANDO_MINUTOS_ACTUAL:
         DisplayFlashDigits(board->display, 2, 3, PERIODO_PARPADEO);
@@ -95,17 +100,17 @@ void CambiarModo(modo_t valor) {
         break;
     case AJUSTANDO_MINUTOS_ALARMA:
         DisplayFlashDigits(board->display, 2, 3, PERIODO_PARPADEO);
-        DisplayToggleDot(board->display, 0);
-        DisplayToggleDot(board->display, 1);
-        DisplayToggleDot(board->display, 2);
-        DisplayToggleDot(board->display, 3);
+        DisplayDotOn(board->display, 0);
+        DisplayDotOn(board->display, 1);
+        DisplayDotOn(board->display, 2);
+        DisplayDotOn(board->display, 3);
         break;
     case AJUSTANDO_HORAS_ALARMA:
         DisplayFlashDigits(board->display, 0, 1, PERIODO_PARPADEO);
-        DisplayToggleDot(board->display, 0);
-        DisplayToggleDot(board->display, 1);
-        DisplayToggleDot(board->display, 2);
-        DisplayToggleDot(board->display, 3);
+        DisplayDotOn(board->display, 0);
+        DisplayDotOn(board->display, 1);
+        DisplayDotOn(board->display, 2);
+        DisplayDotOn(board->display, 3);
         break;
     default:
         break;
@@ -142,9 +147,7 @@ int main(void){
 
         if(DigitalInputHasActivated(board->accept) == true){
             if (modo == MOSTRANDO_HORA){
-                if(!ClockGetTime(reloj,entrada,sizeof(entrada))){
-                    //ClockToggleAlarm(reloj);
-                }
+                Alarmon(reloj);
             }else if(modo == AJUSTANDO_MINUTOS_ACTUAL){
                 CambiarModo(AJUSTANDO_HORAS_ACTUAL);
             }else if (modo == AJUSTANDO_HORAS_ACTUAL){
@@ -161,9 +164,11 @@ int main(void){
 
         if(DigitalInputHasActivated(board->cancel)){
             if (modo == MOSTRANDO_HORA){
-                if(ClockGetAlarm(reloj,entrada,sizeof(entrada))){
-                    //ClockToggleAlarm(reloj);
-                }
+                if(sonar_alarma==true){
+                DisplayDotOff(board->display, 0);
+                sonar_alarma=false;
+                } 
+                Alarmoff(reloj);
             } else {
                 if(ClockGetTime(reloj,entrada,sizeof(entrada))){
                     CambiarModo(MOSTRANDO_HORA);
@@ -181,7 +186,7 @@ int main(void){
         }
 
         if(DigitalInputHasActivated(board->set_alarm)== true){
-            CambiarModo(modo == AJUSTANDO_MINUTOS_ALARMA);
+            CambiarModo(AJUSTANDO_MINUTOS_ALARMA);
             ClockGetAlarm(reloj,entrada,sizeof(entrada));
             DisplayWriteBCD(board->display, entrada, sizeof(entrada));
 
@@ -235,7 +240,15 @@ void SysTick_Handler(void){
         //DisplayToggleDot(board->display,1);
         //last_value = current_value;
 
+
+
         if(modo <= MOSTRANDO_HORA){
+            if(ClockGetAlarm(reloj,hora,sizeof(hora))){
+                DisplayDotOn(board->display, 3);
+            } else {
+                DisplayDotOff(board->display, 3);
+            }
+
             ClockGetTime(reloj,hora,sizeof(hora));
             DisplayWriteBCD(board->display, hora, sizeof(hora));
             if(current_value == 500){

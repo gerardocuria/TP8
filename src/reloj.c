@@ -108,13 +108,13 @@ bool ClockSetAlarm(clock_t2 reloj,const uint8_t * alarma, int size){
 
 
 bool Alarmon(clock_t2 reloj){
-    reloj->alarm->habilitada=true;
-    return reloj->alarm->habilitada;
+    reloj->alarm->valida=true;
+    return reloj->alarm->valida;
 }
 
 bool Alarmoff(clock_t2 reloj){
-    reloj->alarm->habilitada=false;
-    return reloj->alarm->habilitada;
+    reloj->alarm->valida=false;
+    return reloj->alarm->valida;
 }
 
 
@@ -125,8 +125,8 @@ bool consultaralarma(clock_t2 reloj){
 
 
 bool compara(clock_t2 reloj){
-    if(memcmp(reloj->alarm->alarma_actual,reloj->hora_actual, sizeof(reloj->hora_actual)) == 0 && reloj->alarm->habilitada==true){
-        return true;
+    if(memcmp(reloj->alarm->alarma_actual,reloj->hora_actual, sizeof(reloj->hora_actual)) == 0 && reloj->alarm->valida==true){
+        reloj->alarm->funcion(reloj);
     }
     return false;
 }

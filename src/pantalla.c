@@ -105,6 +105,14 @@ void DisplayToggleDot (display_t display, uint8_t position){
     display->memory[position] ^= (1<<7);
 }
 
+void DisplayDotOn (display_t display, uint8_t position){
+    display->memory[position] |= (1<<7);
+}
+
+void DisplayDotOff (display_t display, uint8_t position){
+    display->memory[position] &= !(1<<7);
+}
+
 
 
  
