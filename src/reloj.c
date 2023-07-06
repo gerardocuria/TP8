@@ -14,6 +14,7 @@ struct alarm_s {
     bool habilitada;
     funcion_alarma funcion;
     bool sonar;
+    uint8_t posponer;
 };
 
 struct clock_s {
@@ -55,6 +56,7 @@ uint32_t ClockTick(clock_t2 reloj){
     if(reloj->conteo_tics==reloj->tics_por_segundo){
         reloj->hora_actual[5]++;
         reloj->conteo_tics=0;
+        DecrementarPosponerAlarma (reloj);
   
     }
 
@@ -130,3 +132,15 @@ bool compara(clock_t2 reloj){
     }
     return false;
 }
+
+void PosponerAlarma (clock_t2 reloj){
+    reloj->alarm->posponer = 60;
+}
+
+
+void DecrementarPosponerAlarma (clock_t2 reloj){
+        reloj->alarm->posponer--;
+        if (reloj->alarm->posponer == 0) {
+            reloj->alarm->funcion(reloj);
+        }
+    }

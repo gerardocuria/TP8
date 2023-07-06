@@ -26,4 +26,6 @@ bool Alarmoff(clock_t2 reloj);
 
 bool consultaralarma(clock_t2 reloj);
 
+void PosponerAlarma (clock_t2 reloj);
 
+void DecrementarPosponerAlarma (clock_t2 reloj);

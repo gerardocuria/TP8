@@ -148,6 +148,15 @@ int main(void){
         if(DigitalInputHasActivated(board->accept) == true){
             if (modo == MOSTRANDO_HORA){
                 Alarmon(reloj);
+
+
+            if(sonar_alarma==true){
+                PosponerAlarma (reloj);
+                DisplayDotOff(board->display, 0);
+                sonar_alarma=false;
+            } 
+
+
             }else if(modo == AJUSTANDO_MINUTOS_ACTUAL){
                 CambiarModo(AJUSTANDO_HORAS_ACTUAL);
             }else if (modo == AJUSTANDO_HORAS_ACTUAL){
