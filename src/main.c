@@ -181,22 +181,26 @@ int main(void){
         }
 
         if(DigitalInputHasActivated(board->set_alarm)== true){
-            
+            CambiarModo(modo == AJUSTANDO_MINUTOS_ALARMA);
+            ClockGetAlarm(reloj,entrada,sizeof(entrada));
+            DisplayWriteBCD(board->display, entrada, sizeof(entrada));
+
+
         }
 
         if(DigitalInputHasActivated(board->decrement) == true){
-            if (modo == AJUSTANDO_MINUTOS_ACTUAL){
+            if (modo == AJUSTANDO_MINUTOS_ACTUAL || modo == AJUSTANDO_MINUTOS_ALARMA){
                 DecrementarBCD(&entrada[2], LIMITES_MINUTOS);
-            }else if(modo== AJUSTANDO_HORAS_ACTUAL){
+            }else if(modo== AJUSTANDO_HORAS_ACTUAL || modo == AJUSTANDO_HORAS_ALARMA){
                 DecrementarBCD(entrada, LIMITES_HORAS);
             }
             DisplayWriteBCD(board->display, entrada, sizeof(entrada));
         }
 
         if(DigitalInputHasActivated(board->increment)== true){
-            if (modo == AJUSTANDO_MINUTOS_ACTUAL){
+            if (modo == AJUSTANDO_MINUTOS_ACTUAL || modo == AJUSTANDO_MINUTOS_ALARMA){
                 IncrementarBCD(&entrada[2], LIMITES_MINUTOS);
-            }else if(modo== AJUSTANDO_HORAS_ACTUAL){
+            }else if(modo== AJUSTANDO_HORAS_ACTUAL || modo == AJUSTANDO_HORAS_ALARMA){
                 IncrementarBCD(entrada, LIMITES_HORAS);
             }
             DisplayWriteBCD(board->display, entrada, sizeof(entrada));
@@ -228,17 +232,17 @@ void SysTick_Handler(void){
     //current_value = 
     current_value = ClockTick(reloj);
 
-    if(current_value == 500){
         //DisplayToggleDot(board->display,1);
         //last_value = current_value;
 
         if(modo <= MOSTRANDO_HORA){
             ClockGetTime(reloj,hora,sizeof(hora));
             DisplayWriteBCD(board->display, hora, sizeof(hora));
+            if(current_value == 500){
             DisplayToggleDot(board->display,1);
-        }
-        
-    };
+            };
+
+        };
 
 
     //ClockTick(reloj);
