@@ -27,9 +27,39 @@ uint8_t hora[4];
 
 static modo_t modo;
 
+static const uint8_t LIMITES_MINUTOS[] = {5,9};
+
+static const uint8_t LIMITES_HORAS[] = {2,3};
+
 void ActivarAlarma(clock_t2 reloj){
 
 }
+
+
+void IncrementarBCD(uint8_t numero[2], const uint8_t limite[2]) {
+    numero[1]++;
+    if (numero[1] > 9) {
+        numero[1] = 0;
+        numero[0]++;
+    }
+    if ((numero[0] >= limite[0]) && numero[1] > limite[1]) {
+        numero[1] = 0;
+        numero[0] = 0;
+    }
+}
+
+void DecrementarBCD(uint8_t numero[2], const uint8_t limite[2]) {
+    numero[1]--;
+    if (numero[1] > 9) {
+        numero[1] = 9;
+        numero[0]--;
+    }
+    if ((numero[0] >= limite[0]) && numero[1] >= limite[1]) {
+        numero[0] = 0;
+        numero[1] = 0;
+    }
+} 
+
 
 void CambiarModo(modo_t valor) {
     modo = valor;
@@ -57,8 +87,8 @@ void CambiarModo(modo_t valor) {
         DisplayToggleDot(board->display, 3);*/
         break;
     case AJUSTANDO_HORAS_ACTUAL:
-       /* DisplayFlashDigits(board->display, 0, 1, PERIODO_PARPADEO);
-        DisplayToggleDot(board->display, 1);
+        DisplayFlashDigits(board->display, 0, 1, PERIODO_PARPADEO);
+        /*DisplayToggleDot(board->display, 1);
         DisplayToggleDot(board->display, 0);
         DisplayToggleDot(board->display, 2);
         DisplayToggleDot(board->display, 3);*/
@@ -111,21 +141,36 @@ int main(void){
 
 
         if(DigitalInputHasActivated(board->accept) == true){
-            if(modo == AJUSTANDO_MINUTOS_ACTUAL){
+            if (modo == MOSTRANDO_HORA){
+                if(!ClockGetTime(reloj,entrada,sizeof(entrada))){
+                    //ClockToggleAlarm(reloj);
+                }
+            }else if(modo == AJUSTANDO_MINUTOS_ACTUAL){
                 CambiarModo(AJUSTANDO_HORAS_ACTUAL);
             }else if (modo == AJUSTANDO_HORAS_ACTUAL){
                 ClockSetTime(reloj,entrada, sizeof(entrada));
                 CambiarModo(MOSTRANDO_HORA);
+            }else if (modo == AJUSTANDO_MINUTOS_ALARMA){
+                CambiarModo(AJUSTANDO_HORAS_ALARMA);
+            }else if (modo == AJUSTANDO_HORAS_ALARMA){
+                    ClockSetAlarm(reloj,entrada, sizeof(entrada));
+                    CambiarModo(MOSTRANDO_HORA);
             }
         }
 
+
         if(DigitalInputHasActivated(board->cancel)){
-            if(ClockGetTime(reloj,entrada,sizeof(entrada))){
-                CambiarModo(MOSTRANDO_HORA);
-            }else{
-                CambiarModo(SIN_CONFIGURAR);
-            };
-    
+            if (modo == MOSTRANDO_HORA){
+                if(ClockGetAlarm(reloj,entrada,sizeof(entrada))){
+                    //ClockToggleAlarm(reloj);
+                }
+            } else {
+                if(ClockGetTime(reloj,entrada,sizeof(entrada))){
+                    CambiarModo(MOSTRANDO_HORA);
+                } else {
+                    CambiarModo(SIN_CONFIGURAR);
+                };
+            }
         }
 
         if(DigitalInputHasActivated(board->set_time)== true){
@@ -141,23 +186,25 @@ int main(void){
 
         if(DigitalInputHasActivated(board->decrement) == true){
             if (modo == AJUSTANDO_MINUTOS_ACTUAL){
-                entrada[3] = entrada[3]-1;
+                DecrementarBCD(&entrada[2], LIMITES_MINUTOS);
             }else if(modo== AJUSTANDO_HORAS_ACTUAL){
-                entrada[1] = entrada[1]-1;
+                DecrementarBCD(entrada, LIMITES_HORAS);
             }
             DisplayWriteBCD(board->display, entrada, sizeof(entrada));
         }
 
         if(DigitalInputHasActivated(board->increment)== true){
             if (modo == AJUSTANDO_MINUTOS_ACTUAL){
-                entrada[3] = entrada[3]+1;
+                IncrementarBCD(&entrada[2], LIMITES_MINUTOS);
             }else if(modo== AJUSTANDO_HORAS_ACTUAL){
-                entrada[1] = entrada[1]+1;
+                IncrementarBCD(entrada, LIMITES_HORAS);
             }
             DisplayWriteBCD(board->display, entrada, sizeof(entrada));
         }
 
-        for (int index = 0; index < 50; index++) {
+// min 1hrs
+
+        for (int index = 0; index < 10; index++) {
             for (int delay = 0; delay < 25000; delay++) {
                 __asm("NOP");
             }
@@ -182,7 +229,7 @@ void SysTick_Handler(void){
     current_value = ClockTick(reloj);
 
     if(current_value == 500){
-        DisplayToggleDot(board->display,1);
+        //DisplayToggleDot(board->display,1);
         //last_value = current_value;
 
         if(modo <= MOSTRANDO_HORA){
